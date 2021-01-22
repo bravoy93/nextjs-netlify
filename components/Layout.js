@@ -55,6 +55,144 @@ const Layout = ({ children, title = "Home" }) => {
       <Head>
         <title> {title} | NextJS App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="manifest.json" />
+
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Yoe NextJS" />
+        <meta name="apple-mobile-web-app-title" content="Yoe NextJS" />
+        <meta name="theme-color" content="#0070f3" />
+        <meta name="msapplication-navbutton-color" content="#0070f3" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="msapplication-starturl" content="/" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="48x48"
+          href="icons/icon-48x48.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="48x48"
+          href="icons/icon-48x48.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="72x72"
+          href="icons/icon-72x72.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="72x72"
+          href="icons/icon-72x72.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="96x96"
+          href="icons/icon-96x96.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="96x96"
+          href="icons/icon-96x96.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="144x144"
+          href="icons/icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="144x144"
+          href="icons/icon-144x144.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="icons/icon-192x192.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="192x192"
+          href="icons/icon-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="256x256"
+          href="icons/icon-256x256.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="256x256"
+          href="icons/icon-256x256.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="384x384"
+          href="icons/icon-384x384.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="384x384"
+          href="icons/icon-384x384.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="icons/icon-512x512.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="512x512"
+          href="icons/icon-512x512.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="icons/icon-192x192-maskable.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="192x192"
+          href="icons/icon-192x192-maskable.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="icons/icon-512x512-maskable.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          type="image/png"
+          sizes="512x512"
+          href="icons/icon-512x512-maskable.png"
+        />
       </Head>
 
       <Nav>
