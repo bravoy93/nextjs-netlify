@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 
 const Container = styled.div`
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
