@@ -13,11 +13,11 @@ const Users = ({users}) => (
   </Layout>
 );
 
-Users.getInitialProps = async (ctx) => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users')
-  const json = await res.json()
-  console.log('Jsno is',json)
-  // return { users: json.stargazers_count }
-}
+// Users.getInitialProps = async (ctx) => {
+//   const res = await fetch('https://jsonplaceholder.typicode.com/users')
+//   const json = await res.json()
+//   console.log('Jsno is',json)
+//   // return { users: json.stargazers_count }
+// }
 
 export default Users;
