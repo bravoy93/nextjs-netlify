@@ -39,6 +39,9 @@ const UsersContainer = styled.div`
       }
     }
   }
+  @media (max-width: 368px) {
+    padding: 32px 20px;
+  }
 `;
 
 const User = ({ id, first_name, last_name, email, avatar }) => (
@@ -64,14 +67,10 @@ const Users = ({ users }) => {
     <Layout title="Users">
       <UsersContainer className="users-list">
         <ul>
-          {users.map(({ first_name, last_name, email, avatar, id }) => (
+          {users.map(user => (
             <User
-              key={id}
-              id={id}
-              first_name={first_name}
-              last_name={last_name}
-              email={email}
-              avatar={avatar}
+              key={user.id}
+              {...user}
             />
           ))}
         </ul>
