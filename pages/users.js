@@ -79,13 +79,15 @@ const Users = ({ users }) => {
   );
 };
 
-Users.getInitialProps = async (ctx) => {
+export async function getStaticProps() {
   let users = [];
   await axios
     .get("https://reqres.in/api/users?page=1")
     .then(({ data }) => (users = data.data))
     .catch((e) => console.log("ERROR WHILE FETCHING USERS!", e));
-  return { users };
-};
+  return {
+    props: {users}
+  }
+}
 
 export default Users;
