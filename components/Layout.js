@@ -4,6 +4,7 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import { useEffect } from "react";
+import { NextSeo } from "next-seo";
 
 const Container = styled.div`
   min-height: 80vh;
@@ -50,56 +51,74 @@ const NavLink = ({ to, label }) => (
   </li>
 );
 
-const Layout = ({ children, title = "Home" }) => {
+const Layout = ({ children, title, description }) => {
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.workbox !== undefined) {
-      const wb = window.workbox
-      wb.addEventListener('installed', event => {
-        console.log(`Event ${event.type} is triggered.`)
-        console.log(event)
-      })
+    if (
+      typeof window !== "undefined" &&
+      "serviceWorker" in navigator &&
+      window.workbox !== undefined
+    ) {
+      const wb = window.workbox;
 
-      wb.addEventListener('controlling', event => {
-        console.log(`Event ${event.type} is triggered.`)
-        console.log(event)
-      })
+      console.log(wb)
+      
+      // const promptNewVersionAvailable = (event) => {
+      //   if (
+      //     confirm(
+      //       "A newer version of this web app is available, reload to update?"
+      //     )
+      //   ) {
+      //     wb.addEventListener("controlling", (event) => {
+      //       window.location.reload();
+      //     });
 
-      wb.addEventListener('activated', event => {
-        console.log(`Event ${event.type} is triggered.`)
-        console.log(event)
-      })
+      //     wb.messageSW({ type: "SKIP_WAITING" });
+      //   } else {
+      //     console.log(
+      //       "User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time."
+      //     );
+      //   }
+      // };
 
-      const promptNewVersionAvailable = event => {
-        
-        if (confirm('A newer version of this web app is available, reload to update?')) {
-          wb.addEventListener('controlling', event => {
-            window.location.reload()
-          })
+      // wb.addEventListener("waiting", promptNewVersionAvailable);
+      // wb.addEventListener("externalwaiting", promptNewVersionAvailable);
 
-          
-          wb.messageSW({ type: 'SKIP_WAITING' })
-        } else {
-          console.log(
-            'User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time.'
-          )
-        }
-      }
-
-      wb.addEventListener('waiting', promptNewVersionAvailable)
-      wb.addEventListener('externalwaiting', promptNewVersionAvailable)
-
-      wb.addEventListener('message', event => {
-        console.log(`Event ${event.type} is triggered.`)
-        console.log(event)
-      })
-      wb.register()
-    }
-  }, [])
+      // wb.addEventListener("message", (event) => {
+      //   console.log(`Event ${event.type} is triggered.`);
+      //   console.log(event);
+      // });
+      // wb.register();
+    };
+  }, []);
 
   return (
     <>
+      <NextSeo
+        title={`${title} | NextJS App`}
+        description={description}
+        openGraph={{
+          type: 'website',
+          locale: 'en_US',
+          url: 'https://nextjs-netlify.vercel.app/',
+          title: `${title} | NextJS App`,
+          description,
+          images: [
+            {
+              url: 'icons/icon-512x512.png',
+              width: 512,
+              height: 512,
+              alt: 'Og Image Alt',
+            }
+          ],
+          site_name: 'Yoe NextJS',
+        }}
+        twitter={{
+          handle: '@bravoy93',
+          site: 'https://nextjs-netlify.vercel.app/',
+          cardType: 'summary_large_image',
+        }}
+      />
       <Head>
-        <title> {title} | NextJS App</title>
         <link rel="icon" sizes="16x16 32x32 48x48" href="/favicon.ico" />
 
         {/* PWA */}
@@ -241,25 +260,6 @@ const Layout = ({ children, title = "Home" }) => {
           href="icons/icon-512x512-maskable.png"
         />
 
-        {/* SEO */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:url" content="https://nextjs-netlify.vercel.app/" />
-        <meta name="twitter:title" content="Yoe NextJS" />
-        <meta name="twitter:description" content={`First Yoe's NextJS app`} />
-        <meta
-          name="twitter:image"
-          content="https://nextjs-netlify.vercel.app/icons/android-chrome-192x192.png"
-        />
-        <meta name="twitter:creator" content="@bravoy93" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Yoe NextJS" />
-        <meta property="og:description" content={`First Yoe's NextJS app`} />
-        <meta property="og:site_name" content="Yoe NextJS" />
-        <meta property="og:url" content="https://nextjs-netlify.vercel.app/" />
-        <meta
-          property="og:image"
-          content="https://nextjs-netlify.vercel.app/icons/android-chrome-192x192.png"
-        />
       </Head>
 
       <Nav>
@@ -301,10 +301,12 @@ const Layout = ({ children, title = "Home" }) => {
 
 Layout.defaultProps = {
   title: PropTypes.string,
+  description: PropTypes.string,
 };
 
 Layout.defaultProps = {
   title: "Home",
+  description: "NextJS App made by Yoe"
 };
 
 export default Layout;

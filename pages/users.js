@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import axios from "axios";
 import Link from "next/link";
+import { BreadcrumbJsonLd } from "next-seo";
 
 const UsersContainer = styled.div`
   width: 100%;
@@ -62,22 +63,31 @@ const User = ({ id, first_name, last_name, email, avatar }) => (
   </li>
 );
 
-const Users = ({ users }) => {
-  return (
-    <Layout title="Users">
+const Users = ({ users }) => (
+  <>
+    <BreadcrumbJsonLd
+      itemListElements={users.map(({ id, first_name, last_name }, i) => {
+        return {
+          position: i + 1,
+          name: `${first_name} ${last_name}`,
+          item: `https://nextjs-netlify.vercel.app/users/${id}`,
+        };
+      })}
+    />
+    <Layout
+      title="Users"
+      description="A list of users from reqres.in to test the data fetching before website has builded."
+    >
       <UsersContainer className="users-list">
         <ul>
-          {users.map(user => (
-            <User
-              key={user.id}
-              {...user}
-            />
+          {users.map((user) => (
+            <User key={user.id} {...user} />
           ))}
         </ul>
       </UsersContainer>
     </Layout>
-  );
-};
+  </>
+);
 
 export async function getStaticProps() {
   let users = [];
@@ -86,8 +96,8 @@ export async function getStaticProps() {
     .then(({ data }) => (users = data.data))
     .catch((e) => console.log("ERROR WHILE FETCHING USERS!", e));
   return {
-    props: {users}
-  }
+    props: { users },
+  };
 }
 
 export default Users;
