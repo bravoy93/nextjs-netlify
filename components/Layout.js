@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import { useEffect } from "react";
 
 const Container = styled.div`
   min-height: 80vh;
@@ -50,6 +51,51 @@ const NavLink = ({ to, label }) => (
 );
 
 const Layout = ({ children, title = "Home" }) => {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'serviceWorker' in navigator && window.workbox !== undefined) {
+      const wb = window.workbox
+      wb.addEventListener('installed', event => {
+        console.log(`Event ${event.type} is triggered.`)
+        console.log(event)
+      })
+
+      wb.addEventListener('controlling', event => {
+        console.log(`Event ${event.type} is triggered.`)
+        console.log(event)
+      })
+
+      wb.addEventListener('activated', event => {
+        console.log(`Event ${event.type} is triggered.`)
+        console.log(event)
+      })
+
+      const promptNewVersionAvailable = event => {
+        
+        if (confirm('A newer version of this web app is available, reload to update?')) {
+          wb.addEventListener('controlling', event => {
+            window.location.reload()
+          })
+
+          
+          wb.messageSW({ type: 'SKIP_WAITING' })
+        } else {
+          console.log(
+            'User rejected to reload the web app, keep using old version. New version will be automatically load when user open the app next time.'
+          )
+        }
+      }
+
+      wb.addEventListener('waiting', promptNewVersionAvailable)
+      wb.addEventListener('externalwaiting', promptNewVersionAvailable)
+
+      wb.addEventListener('message', event => {
+        console.log(`Event ${event.type} is triggered.`)
+        console.log(event)
+      })
+      wb.register()
+    }
+  }, [])
+
   return (
     <>
       <Head>

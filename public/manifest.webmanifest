@@ -7,6 +7,8 @@
   "lang": "es-ES",
   "theme_color": "#0070f3",
   "display": "standalone",
+  "orientation": "any",
+  "categories": ["NextJS", "React", "Javascript"],
   "icons": [
     {
       "src": "icons/icon-48x48.png",
