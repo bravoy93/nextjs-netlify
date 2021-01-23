@@ -54,9 +54,10 @@ const Layout = ({ children, title = "Home" }) => {
     <>
       <Head>
         <title> {title} | NextJS App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="manifest" href="manifest.json" />
+        <link rel="icon" sizes="16x16 32x32 48x48" href="/favicon.ico" />
 
+        {/* PWA */}
+        <link rel="manifest" href="manifest.webmanifest" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="Yoe NextJS" />
@@ -192,6 +193,26 @@ const Layout = ({ children, title = "Home" }) => {
           type="image/png"
           sizes="512x512"
           href="icons/icon-512x512-maskable.png"
+        />
+
+        {/* SEO */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="https://nextjs-netlify.vercel.app/" />
+        <meta name="twitter:title" content="Yoe NextJS" />
+        <meta name="twitter:description" content={`First Yoe's NextJS app`} />
+        <meta
+          name="twitter:image"
+          content="https://nextjs-netlify.vercel.app/icons/android-chrome-192x192.png"
+        />
+        <meta name="twitter:creator" content="@bravoy93" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Yoe NextJS" />
+        <meta property="og:description" content={`First Yoe's NextJS app`} />
+        <meta property="og:site_name" content="Yoe NextJS" />
+        <meta property="og:url" content="https://nextjs-netlify.vercel.app/" />
+        <meta
+          property="og:image"
+          content="https://nextjs-netlify.vercel.app/icons/android-chrome-192x192.png"
         />
       </Head>
 

@@ -65,17 +65,38 @@
     {
       "name": "About",
       "url": "/about",
-      "description": "About us page"
+      "description": "About us page",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Users",
       "url": "/users",
-      "description": "A list of users"
+      "description": "A list of users",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Simple User",
       "url": "/users/2",
-      "description": "A single user from the list of users"
+      "description": "A single user from the list of users",
+      "icons": [
+        {
+          "src": "icons/icon-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
     }
   ]
 }
